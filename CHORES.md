@@ -29,13 +29,13 @@ src/types/weather.ts: WeatherCondition, CurrentWeatherResponse (coord, weather[]
 
 url === null → запрос не выполняется. -->
 
-Шаг 5. Тесты хука
+<!-- Шаг 5. Тесты хука
 
 Мок fetch через vi.stubGlobal.
 
 Кейсы: idle, loading→success, loading→error.
 
-Фикстура с ответом API.
+Фикстура с ответом API. -->
 
 Шаг 6. Геолокация + fallback
 
