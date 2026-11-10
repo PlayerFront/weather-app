@@ -48,7 +48,7 @@ describe('useGeolocation', () => {
             result.current.requestLocation()
         })
 
-        expect(result.current.error).toBe('Доступ к геолокации запрещен')
+        expect(result.current.error).toBe('Location access denied')
         expect(result.current.coords).toBeNull()
         expect(result.current.loading).toBe(false)
     })
@@ -69,6 +69,6 @@ describe('useGeolocation', () => {
             result.current.requestLocation()
         })
 
-        expect(result.current.error).toBe('Превышено время ожидания')
+        expect(result.current.error).toBe('Location request timed out')
     })
 })
