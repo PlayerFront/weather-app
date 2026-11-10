@@ -1,0 +1,23 @@
+.weather-app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    font-family: 'Poppins',system-ui, -apple-system, sans-serif;
+}
+
+.weather-controls {
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.weather-controls input, 
+.weather-controls button {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  background: var(--hourly-bg);
+  color: var(--text-color);
+  backdrop-filter: var(--hourly-blur);
+}

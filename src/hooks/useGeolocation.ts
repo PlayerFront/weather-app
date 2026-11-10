@@ -19,7 +19,7 @@ export function useGeolocation(): UseGeolocationResult {
 
     const requestLocation = useCallback(() => {
         if(!('geolocation' in navigator)) {
-            setError('Геолокация не поддерживается')
+            setError('Geolocation is not supported')
             return
         }
 
@@ -36,11 +36,11 @@ export function useGeolocation(): UseGeolocationResult {
             },
             (err) => {
                 const messages: Record<number, string> = {
-                    1: 'Доступ к геолокации запрещен',
-                    2: 'Местоположение недоступно',
-                    3: 'Превышено время ожидания',
+                    1: 'Location access denied',
+                    2: 'Location unavailable',
+                    3: 'Location request timed out',
                 }
-                setError(messages[err.code] ?? 'Неизвестная ошибка геолокации')
+                setError(messages[err.code] ?? 'Unknown geolocation error')
                 setLoading(false)
             }
         )

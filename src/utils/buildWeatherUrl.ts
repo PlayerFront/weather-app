@@ -13,7 +13,7 @@ export function buildWeatherUrl(query: WeatherQuery | null): string | null {
 
     const params = new URLSearchParams({
         units: 'metric',
-        lang: 'ru',
+        lang: 'en',
         appid: apiKey,
     })
 
