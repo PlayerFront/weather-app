@@ -3,21 +3,67 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 35px;
     padding: 2rem 1rem;
-    font-family: 'Poppins',system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
 }
 
 .weather-controls {
     display: flex;
+    align-items: center;
     gap: 10px;
     z-index: 10;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
 }
 
-.weather-controls input, 
+.weather-controls form {
+    flex: 1;
+    display: flex;
+}
+
+.weather-controls input {
+    flex: 1;
+    width: 100%;
+    padding: 0.6rem 1rem;
+}
+
 .weather-controls button {
-  padding: 0.6rem 1rem;
-  border-radius: 12px;
-  background: var(--hourly-bg);
-  color: var(--text-color);
-  backdrop-filter: var(--hourly-blur);
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-controls__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.weather-controls input,
+.weather-controls button {
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--card-text-color);
+    backdrop-filter: var(--hourly-blur);
+    cursor: pointer;
+}
+
+.weather-controls__spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--card-text-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
