@@ -4,7 +4,13 @@ import { useGeolocation } from './useGeolocation'
 
 describe('useGeolocation', () => {
     beforeEach(() => {
-        vi.restoreAllMocks()
+        vi.stubGlobal('navigator', {
+            ...navigator,
+            geolocation: { getCurrentPosition: vi.fn() },
+            permissions: {
+                query: vi.fn().mockResolvedValue({ state: 'prompt' }),
+            },
+        });
     })
 
     afterEach(() => {
@@ -25,7 +31,7 @@ describe('useGeolocation', () => {
 
         act(() => {
             result.current.requestLocation()
-        })
+        }) 
 
         expect(result.current.coords).toEqual({ lat: 55.75, lon: 37.62 })
         expect(result.current.error).toBeNull()

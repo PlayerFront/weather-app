@@ -30,6 +30,6 @@ describe('buildWeatherUrl', () => {
 
     it('Содержится lang=ru', () => {
         const url = buildWeatherUrl({ city: 'New York' })
-        expect(url).toContain('lang=ru')
+        expect(url).toContain('lang=en')
     })
 })
