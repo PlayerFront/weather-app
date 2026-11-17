@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface Coords {
     lat: number
@@ -18,7 +18,7 @@ export function useGeolocation(): UseGeolocationResult {
     const [error, setError] = useState<string | null>(null)
 
     const requestLocation = useCallback(() => {
-        if(!('geolocation' in navigator)) {
+        if (!('geolocation' in navigator)) {
             setError('Geolocation is not supported')
             return
         }
@@ -45,6 +45,22 @@ export function useGeolocation(): UseGeolocationResult {
             }
         )
     }, [])
+
+    useEffect(() => {
+        if (!('geolocation' in navigator)) return
+        navigator.permissions
+            ?.query({ name: 'geolocation' })
+            .then((permissionStatus: PermissionStatus) => {
+                if (permissionStatus.state === 'granted') {
+                    requestLocation()
+                } else if (permissionStatus.state === 'prompt') {
+                    requestLocation()
+                }
+            })
+            .catch(() => {
+                requestLocation()
+            })
+    }, [requestLocation])
 
     return { coords, loading, error, requestLocation }
 }
