@@ -14,8 +14,8 @@ export function WeatherIcon({ main, className }: WeatherIconProps) {
         className, 
         'aria-hidden': true as const }
 
-    if (condition === 'clear') return <SunnyIcon {...props} />
-    if (condition === 'rain' || condition === 'drizzle') return <RainyIcon {...props} />
-    if (condition === 'snow') return <SnowyIcon {...props} />
-    return <CloudyIcon {...props} />
+    if (condition === 'clear') return <SunnyIcon {...props} data-testid="icon-sunny" />
+    if (condition === 'rain' || condition === 'drizzle' || condition === 'thunderstorm') return <RainyIcon {...props} data-testid="icon-rainy"/>
+    if (condition === 'snow') return <SnowyIcon {...props} data-testid="icon-snowy"/>
+    return <CloudyIcon {...props} data-testid="icon-cloudy"/>
 }

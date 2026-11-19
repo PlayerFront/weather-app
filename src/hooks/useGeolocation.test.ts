@@ -8,7 +8,7 @@ describe('useGeolocation', () => {
             ...navigator,
             geolocation: { getCurrentPosition: vi.fn() },
             permissions: {
-                query: vi.fn().mockResolvedValue({ state: 'prompt' }),
+                query: vi.fn().mockResolvedValue({ state: 'denied' }),
             },
         });
     })
